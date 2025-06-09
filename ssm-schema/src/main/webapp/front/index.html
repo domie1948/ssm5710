@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>疫情期间医院门诊管理系统</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+		<!-- Place favicon.ico in the root directory -->
+
+		<!-- all css here -->
+		<!-- bootstrap v3.3.6 css -->
+		<link rel="stylesheet" href="assets/css/original/bootstrap.min.css">
+		<!-- animate css -->
+		<link rel="stylesheet" href="assets/css/original/animate.css">
+		<!-- jquery-ui.min css -->
+		<link rel="stylesheet" href="assets/css/original/jquery-ui.min.css">
+		<!-- meanmenu css -->
+		<link rel="stylesheet" href="assets/css/original/meanmenu.min.css">
+		<!-- owl.carousel css -->
+		<link rel="stylesheet" href="assets/css/original/owl.carousel.css">
+		<!-- slick slider css -->
+		<link rel="stylesheet" href="assets/css/original/slick.css">
+		<!-- font-awesome css -->
+		<link rel="stylesheet" href="assets/css/original/font-awesome.min.css">
+		<!-- style css -->
+		<link rel="stylesheet" href="assets/css/original/style.css">
+		<link rel="stylesheet" href="assets/css/index.css">
+		<!-- responsive css -->
+		<link rel="stylesheet" href="assets/css/original/responsive.css">
+		<!-- modernizr js -->
+		<script src="assets/js/relys/modernizr-2.8.3.min.js"></script>
+		<style type="text/css">
+			html, body {
+		        height: 100%;
+		        overflow: auto;
+		        margin: 0;
+		    }
+
+		    html {
+		        overflow: scroll;
+		    }
+
+			.main-menu ul li a {
+				font-size: 18px;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- header start -->
+		<header id="app">
+			<!-- header-bottom-area start -->
+			<div id="sticker" class="header-bottom-area">
+				<div class="container">
+					<div class="inner-container">
+						<div class="row">
+							<div class="col-md-2 col-sm-4 col-xs-6">
+								<div class="logo">
+									<div style="line-height: 3.85rem;">疫情期间医院门诊管理系统</div>
+								</div>
+							</div>
+							<div class="col-md-8 hidden-xs hidden-sm">
+								<div class="main-menu">
+									<nav>
+										<ul v-if="navs">
+											<li v-for="(item, i) in navs" :key="i">
+												<a :href="`javascript:onPageClick('${item.url}')`" v-if="item.yanzheng&&hstoken">{{item.name}}</a>
+												<a href="javascript:onPageClick('./pages/login/login.html')" v-if="item.yanzheng&&!hstoken">登录</a>
+												<a :href="`javascript:onPageClick('${item.url}')`" v-if="!item.yanzheng&&!item.window">{{item.name}}</a>
+												<a :href="`${item.url}`" target="view_window" v-if="!item.yanzheng&&item.window">{{item.name}}</a>
+												<ul v-if="item.children.length>0&&hstoken">
+													<li v-for="(ele, idx) in item.children" :key="idx"><a :href="`javascript:onPageClick('${ele.url}')`">{{ele.name}}</a></li>
+												</ul>
+											</li>
+										</ul>
+									</nav>
+								</div>
+							</div>
+							<div class="col-md-2 col-sm-8 col-xs-6 header-right">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- header-bottom-area end -->
+			<!-- mobile-menu-area start -->
+			<div class="mobile-menu-area visible-xs visible-sm">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="mobile-menu">
+								<nav id="dropdown">
+									<ul>
+										<li v-for="(item, i) in navs" :key="i">
+											<a :href="`javascript:onPageClick('${item.url}')`" v-if="item.yanzheng&&hstoken">{{item.name}}</a>
+											<a href="javascript:onPageClick('./pages/login/login.html')" v-if="item.yanzheng&&!hstoken">登录</a>
+											<a :href="`javascript:onPageClick('${item.url}')`" v-if="!item.yanzheng&&!item.window">{{item.name}}</a>
+											<a :href="`${item.url}`" target="view_window" v-if="!item.yanzheng&&item.window">{{item.name}}</a>
+											<ul v-if="item.children.length>0">
+												<li v-for="(ele, idx) in item.children" :key="idx"><a :href="`javascript:onPageClick('${ele.url}')`">{{ele.name}}</a></li>
+											</ul>
+										</li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- mobile-menu-area end -->
+		</header>
+		<!-- header end -->
+		<iframe src="pages/home/shop-home.html" frameborder="0" scrolling="no" id="main" onload="this.height=0" style="margin-bottom: 90px;"></iframe>
+		<!-- footer start -->
+		<footer>
+			<!-- footer-bottom-area start -->
+			<div class="footer-bottom-area">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12">
+							<div class="copyright">
+								<p>Copyright © <a href="#">jiulin</a>. All Rights Reserved</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- footer-bottom-area end -->
+		</footer>
+		<!-- footer end -->
+		<!-- all js here -->
+		<!-- jquery latest version -->
+		<script src="assets/js/relys/jquery-1.12.0.min.js"></script>
+		<!-- bootstrap js -->
+		<script src="assets/js/relys/bootstrap.min.js"></script>
+		<!-- owl.carousel js -->
+		<script src="assets/js/relys/owl.carousel.min.js"></script>
+		<!-- meanmenu js -->
+		<script src="assets/js/relys/jquery.meanmenu.js"></script>
+		<!-- jquery-ui js -->
+		<script src="assets/js/relys/jquery-ui.min.js"></script>
+		<!-- wow js -->
+		<script src="assets/js/relys/wow.min.js"></script>
+		<!-- plugins js -->
+		<script src="assets/js/relys/plugins.js"></script>
+		<script src="assets/js/vue.js"></script>
+		<script src="assets/js/api/api.js"></script>
+		<script src="assets/js/api/defaultuser.js"></script>
+		<script src="assets/js/api/shop-cart.js"></script>
+		<script src="assets/js/api/tplist.js"></script>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: "#app",
+				data: {
+					hstoken: false,
+					navs: [
+						{
+							name: '首页',
+							url: './pages/home/shop-home.html',
+							children: []
+						},
+						{
+							name: '医生模块'.split('模块')[0],
+							url: './pages/yisheng/list.html',
+							children: [
+							]
+						},
+						{
+							name: '疫情公告模块'.split('模块')[0],
+							url: './pages/yiqinggonggao/list.html',
+							children: [
+							]
+						},
+						{
+							name: '医院信息模块'.split('模块')[0],
+							url: './pages/yiyuanxinxi/list.html',
+							children: [
+							]
+						},
+						{
+							name: '个人中心',
+							url: './pages/personal/personal.html',
+							yanzheng: true,
+							children: [
+								{
+									name: '我的收藏',
+									url: './pages/storeup/list.html'
+								},
+							]
+						}
+					]
+				},
+				created() {
+							var obj = [
+								{
+									menuname: "医生列表".split('列表')[0],
+									menutable: "yisheng",
+									buttons: [
+										"查看",
+									]
+								},
+								{
+									menuname: "疫情公告列表".split('列表')[0],
+									menutable: "yiqinggonggao",
+									buttons: [
+										"查看",
+									]
+								},
+								{
+									menuname: "医院信息列表".split('列表')[0],
+									menutable: "yiyuanxinxi",
+									buttons: [
+										"查看",
+										"预约",
+									]
+								},
+							]
+					localStorage.setItem("daohangmenus", JSON.stringify(obj))
+					var obj2 = {
+						yonghu: [
+							{
+								menuname: "行动轨迹列表".split('列表')[0],
+								menutable: "xingdongguiji",
+								buttons: [
+									"新增",
+									"查看",
+									"修改",
+									"删除",
+								]
+							},
+							{
+								menuname: "异样报告列表".split('列表')[0],
+								menutable: "yiyangbaogao",
+								buttons: [
+									"新增",
+									"查看",
+									"修改",
+									"删除",
+								]
+							},
+							{
+								menuname: "预约信息列表".split('列表')[0],
+								menutable: "yuyuexinxi",
+								buttons: [
+									"查看",
+									"删除",
+									"支付",
+								]
+							},
+							{
+								menuname: "在线聊天列表".split('列表')[0],
+								menutable: "zaixianliaotian",
+								buttons: [
+									"新增",
+									"查看",
+									"修改",
+									"删除",
+								]
+							},
+							{
+								menuname: "聊天回复列表".split('列表')[0],
+								menutable: "liaotianhuifu",
+								buttons: [
+									"查看",
+								]
+							},
+							{
+								menuname: "收藏列表".split('列表')[0],
+								menutable: "storeup",
+								buttons: [
+									"查看",
+									"删除",
+								]
+							},
+						],
+						yisheng: [
+							{
+								menuname: "预约信息列表".split('列表')[0],
+								menutable: "yuyuexinxi",
+								buttons: [
+									"查看",
+									"修改",
+									"删除",
+									"审核",
+								]
+							},
+							{
+								menuname: "在线聊天列表".split('列表')[0],
+								menutable: "zaixianliaotian",
+								buttons: [
+									"查看",
+									"修改",
+									"删除",
+									" 回复",
+								]
+							},
+							{
+								menuname: "聊天回复列表".split('列表')[0],
+								menutable: "liaotianhuifu",
+								buttons: [
+									"查看",
+									"修改",
+									"删除",
+								]
+							},
+						],
+					}
+					localStorage.setItem("frontRoleMenus", JSON.stringify(obj2))
+					this.navs.push({
+						name: '后台管理',
+						url: adminurl+"login",
+						window: true,
+						children: []
+					})
+				},
+				methods: {
+					onPageClick(url) {
+						$('.search-inside').fadeOut();
+						$('#main').attr('src', url);
+					},
+				}
+			})
+			setInterval(function() {
+				var token = localStorage.getItem("Token")
+				app.hstoken = token ? true : false
+			}, 1000)
+			
+			//获取子页面的高度
+			function reinitIframe() {
+				var childPageH = $('#main').contents().find('#app').height();
+				$('#main').height(childPageH);
+			}
+			window.setInterval("reinitIframe()", 200);
+
+			function onPageClick(url) {
+				$('#main').attr('src', url);
+			}
+		</script>
+		<script src="assets/js/relys/main.js"></script>
+	</body>
+</html>
